@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
 import { userModel } from "../models/user";
 import * as dotenv from "dotenv";
+import jwt from "jsonwebtoken";
 
 dotenv.config();
+
+export const JWT_SECRET = process.env.JWT_SECRET || "";
 
 const signupController = async (req: any, res: any) => {
   const { fullname, email, password } = await req.body;
@@ -32,9 +35,16 @@ const signupController = async (req: any, res: any) => {
 
     return res.status(201).json({
       message: `welcome ${fullname}`,
-      data: createdUser,
+      data: {
+        token: jwt.sign(
+          { _id: createdUser._id },
+          JWT_SECRET
+        ),
+        _id: createdUser._id,
+      },
     });
   } catch (error) {
+    console.log(error);
     return res.status(400).json({
       message: "something went wrong",
       error: error,

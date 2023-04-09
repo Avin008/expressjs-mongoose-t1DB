@@ -1,4 +1,6 @@
 import { userModel } from "../models/user";
+import jwt from "jsonwebtoken";
+import { JWT_SECRET } from "./signup.controller";
 
 const loginController = async (req: any, res: any) => {
   const { email, password } = await req.body;
@@ -16,6 +18,13 @@ const loginController = async (req: any, res: any) => {
     if (findUser.password === password)
       return res.status(200).json({
         message: `welcome back ${findUser.fullname}`,
+        data: {
+          token: jwt.sign(
+            { _id: findUser._id },
+            JWT_SECRET
+          ),
+          _id: findUser._id,
+        },
       });
 
     return res

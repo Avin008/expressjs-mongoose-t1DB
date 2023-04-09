@@ -22,15 +22,11 @@ const loginController = async (req: any, res: any) => {
       .status(400)
       .json({ message: "invalid password" });
   } catch (error) {
-    return res
-      .status(400)
-      .json({
-        message: "something went wrong",
-        error: error,
-      });
+    return res.status(400).json({
+      message: "something went wrong",
+      error: error,
+    });
   }
-
-  res.json({ message: "login route" });
 };
 
 export { loginController };

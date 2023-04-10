@@ -26,7 +26,7 @@ const createPostController = async (
 
     return res.status(201).json({
       message: "post created successfully",
-      data: createdPost,
+      data: { post: createdPost },
     });
   } catch (error) {
     return res.status(400).json({

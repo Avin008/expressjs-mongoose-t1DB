@@ -1,8 +1,12 @@
 import { userModel } from "../models/user";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "./signup.controller";
+import { Request, Response } from "express";
 
-const loginController = async (req: any, res: any) => {
+const loginController = async (
+  req: Request,
+  res: Response
+) => {
   const { email, password } = await req.body;
 
   try {

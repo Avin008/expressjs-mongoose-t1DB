@@ -2,12 +2,16 @@ import mongoose from "mongoose";
 import { userModel } from "../models/user";
 import * as dotenv from "dotenv";
 import jwt from "jsonwebtoken";
+import { Request, Response } from "express";
 
 dotenv.config();
 
 export const JWT_SECRET = process.env.JWT_SECRET || "";
 
-const signupController = async (req: any, res: any) => {
+const signupController = async (
+  req: Request,
+  res: Response
+) => {
   const { fullname, email, password } = await req.body;
 
   const doesEmailExist = await userModel.exists({

@@ -2,8 +2,12 @@ import { userModel } from "../models/user";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "./signup.controller";
 import { postModel } from "../models/post";
+import { Response, Request } from "express";
 
-const createPostController = async (req: any, res: any) => {
+const createPostController = async (
+  req: Request,
+  res: Response
+) => {
   const { post, token } = await req.body;
   const { text } = post;
 

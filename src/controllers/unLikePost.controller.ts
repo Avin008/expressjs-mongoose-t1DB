@@ -1,6 +1,10 @@
 import { postModel } from "../models/post";
+import { Request, Response } from "express";
 
-const unLikePostController = async (req: any, res: any) => {
+const unLikePostController = async (
+  req: Request,
+  res: Response
+) => {
   const { post, token } = await req.body;
   const { id } = post;
 

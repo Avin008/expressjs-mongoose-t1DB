@@ -1,6 +1,10 @@
 import { postModel } from "../models/post";
+import { Response, Request } from "express";
 
-const deletePostController = async (req: any, res: any) => {
+const deletePostController = async (
+  req: Request,
+  res: Response
+) => {
   const { token, post } = await req.body;
   const { id } = post;
 

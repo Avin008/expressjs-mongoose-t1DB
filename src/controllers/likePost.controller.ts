@@ -1,8 +1,12 @@
 import { postModel } from "../models/post";
 import { JWT_SECRET } from "./signup.controller";
 import jwt from "jsonwebtoken";
+import { Request, Response } from "express";
 
-const likePostController = async (req: any, res: any) => {
+const likePostController = async (
+  req: Request,
+  res: Response
+) => {
   const { post, token } = await req.body;
   const { id } = post;
 

@@ -5,6 +5,7 @@ import { router as postRouter } from "./routes/post";
 import { router as likeRouter } from "./routes/likePost";
 import cors from "cors";
 import { router as suggestionsRouter } from "./routes/suggestions";
+import { router as followRouter } from "./routes/follow";
 
 const app = express();
 const port = process.env.PORT || 3333;
@@ -20,6 +21,7 @@ app.use("/", authRouter);
 app.use("/post", postRouter);
 app.use("/like", likeRouter);
 app.use("/suggestions", suggestionsRouter);
+app.use("/follow", followRouter);
 
 app.listen(port, () => {
   console.log(

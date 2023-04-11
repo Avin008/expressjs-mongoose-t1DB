@@ -1,7 +1,7 @@
 import { Schema, Types, model } from "mongoose";
 
 const postSchema = new Schema({
-  author: Types.ObjectId,
+  author: { type: Types.ObjectId, ref: "User" },
   text: String,
   likes: [{ type: Types.ObjectId, ref: "User" }],
   comments: [

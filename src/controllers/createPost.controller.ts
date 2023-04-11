@@ -15,13 +15,9 @@ const createPostController = async (
   const userId = jwt.verify(token, JWT_SECRET)._id;
 
   try {
-    const findUser = await userModel.findById(userId);
     const createdPost = await postModel.create({
-      user_id: findUser._id,
-      username: findUser.username,
-      fullname: findUser.fullname,
+      author: userId,
       text: text,
-      createdAt: Date.now(),
     });
 
     return res.status(201).json({

@@ -12,7 +12,10 @@ const getPostController = async (
   //   const userId = jwt.verify(token, JWT_SECRET)._id;
 
   try {
-    const getPosts = await postModel.find();
+    const getPosts = await postModel
+      .find()
+      .populate("author");
+
     return res.status(200).json({
       message: "followed users posts",
       data: { posts: getPosts },

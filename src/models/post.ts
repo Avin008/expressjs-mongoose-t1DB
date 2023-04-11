@@ -1,19 +1,22 @@
-import { Mongoose, Schema, Types, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 
 const postSchema = new Schema({
-  user_id: String,
-  username: String,
-  fullname: String,
+  author: Types.ObjectId,
   text: String,
-  likes: [{ type: Types.ObjectId }],
-  comment: [
+  likes: [{ type: Types.ObjectId, ref: "User" }],
+  comments: [
     {
-      user_id: { type: Types.ObjectId },
-      fullname: String,
-      username: String,
-      comment: String,
+      user: { type: Types.ObjectId, ref: "User" },
+      comment: { type: String },
+      createdAt: { type: Date, immutable: true },
     },
   ],
+  createdAt: {
+    type: Date,
+    immutable: true,
+    default: Date.now(),
+  },
+  updatedAt: { type: Date, required: false },
 });
 
 const postModel = model("Post", postSchema);

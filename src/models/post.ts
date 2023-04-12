@@ -4,13 +4,6 @@ const postSchema = new Schema({
   author: { type: Types.ObjectId, ref: "User" },
   text: String,
   likes: [{ type: Types.ObjectId, ref: "User" }],
-  comments: [
-    {
-      user: { type: Types.ObjectId, ref: "User" },
-      comment: { type: String },
-      createdAt: { type: Date, immutable: true },
-    },
-  ],
   createdAt: {
     type: Date,
     immutable: true,

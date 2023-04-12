@@ -6,6 +6,6 @@ const commentSchema = new Schema({
   comment: String,
 });
 
-const commentModel = model("Comment", commentSchema);
+const commentModel = model("comments", commentSchema);
 
 export { commentModel };

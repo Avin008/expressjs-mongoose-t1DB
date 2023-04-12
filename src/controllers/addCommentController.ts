@@ -9,8 +9,6 @@ const addCommentController = async (
   const { token, post, comment } = await req.body;
   const { _id } = post;
 
-  console.log(comment);
-
   //   @ts-ignore
   const userId = jwt.verify(token, JWT_SECRET)._id;
 

@@ -5,6 +5,6 @@ import { unLikePostController } from "../controllers/unLikePost.controller";
 const router = express.Router();
 
 router.post("/", likePostController);
-router.delete("/", unLikePostController);
+router.put("/", unLikePostController);
 
 export { router };

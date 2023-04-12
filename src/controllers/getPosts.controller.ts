@@ -16,6 +16,8 @@ const getPostController = async (
       .find()
       .populate("author");
 
+    // console.log(getPosts);
+
     return res.status(200).json({
       message: "followed users posts",
       data: { posts: getPosts },

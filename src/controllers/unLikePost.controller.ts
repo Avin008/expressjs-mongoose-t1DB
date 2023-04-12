@@ -1,5 +1,7 @@
 import { postModel } from "../models/post";
 import { Request, Response } from "express";
+import jwt from "jsonwebtoken";
+import { JWT_SECRET } from "./signup.controller";
 
 const unLikePostController = async (
   req: Request,
@@ -16,6 +18,9 @@ const unLikePostController = async (
       { post_id: id },
       { $pull: { likes: userId } }
     );
+
+    console.log(req.body);
+
     return res
       .status(201)
       .json({ message: "post liked", data: likedPost });

@@ -2,22 +2,24 @@ import { commentModel } from "../models/comments";
 import { Request, Response } from "express";
 import { JWT_SECRET } from "./signup.controller";
 import jwt from "jsonwebtoken";
-const commentController = async (
+const addCommentController = async (
   req: Request,
   res: Response
 ) => {
-  const { token, post } = await req.body;
+  const { token, post, comment } = await req.body;
   const { _id } = post;
+
+  console.log(comment);
 
   //   @ts-ignore
   const userId = jwt.verify(token, JWT_SECRET)._id;
 
   try {
-    const comments = await commentModel
-      .find({
-        post_id: _id,
-      })
-      .populate("author");
+    const comments = await commentModel.create({
+      post_id: _id,
+      author: userId,
+      comment: comment,
+    });
 
     return res.status(200).json({
       message: "post comments",
@@ -30,4 +32,4 @@ const commentController = async (
   }
 };
 
-export { commentController };
+export { addCommentController };

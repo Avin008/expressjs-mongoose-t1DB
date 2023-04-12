@@ -19,8 +19,6 @@ const unLikePostController = async (
       { $pull: { likes: userId } }
     );
 
-    console.log(req.body);
-
     return res
       .status(201)
       .json({ message: "post liked", data: likedPost });

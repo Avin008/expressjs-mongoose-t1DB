@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { postModel } from "../models/post";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "./signup.controller";
+import { commentModel } from "../models/comments";
 const getPostController = async (
   req: Request,
   res: Response
@@ -15,8 +16,6 @@ const getPostController = async (
     const getPosts = await postModel
       .find()
       .populate("author");
-
-    // console.log(getPosts);
 
     return res.status(200).json({
       message: "followed users posts",

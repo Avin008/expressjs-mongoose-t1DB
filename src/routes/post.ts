@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.get("/", getPostController);
 router.post("/", createPostController);
-router.delete("/", deletePostController);
+router.post("/delete", deletePostController);
 router.put("/", updatePostController);
 router.post("/comments", commentController);
 router.put("/comments", addCommentController);

@@ -8,16 +8,17 @@ const likePostController = async (
   res: Response
 ) => {
   const { post, token } = await req.body;
-  const { id } = post;
+  const { _id } = post;
 
   //   @ts-ignore
   const userId = jwt.verify(token, JWT_SECRET)._id;
 
   try {
-    const likedPost = await postModel.findOneAndUpdate(
-      { post_id: id },
+    const likedPost = await postModel.findByIdAndUpdate(
+      { _id },
       { $push: { likes: userId } }
     );
+
     return res
       .status(201)
       .json({ message: "post liked", data: likedPost });

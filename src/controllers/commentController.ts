@@ -14,9 +14,7 @@ const commentController = async (
 
   try {
     const comments = await commentModel
-      .find({
-        post_id: _id,
-      })
+      .find()
       .populate("author");
 
     return res.status(200).json({

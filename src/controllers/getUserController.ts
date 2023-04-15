@@ -15,7 +15,10 @@ const getUserDataController = async (
 
   res.status(200).json({
     message: "user data",
-    data: { userData: userData, postData: postData },
+    data: {
+      userData: userData,
+      postData: postData,
+    },
   });
 };
 

@@ -10,7 +10,8 @@ import cors from "cors";
 import { router as suggestionsRouter } from "./routes/suggestions";
 import { router as followRouter } from "./routes/follow";
 import { router as postsRouter } from "./routes/getPosts";
-import { getUserDataController as userRouter } from "./controllers/getUserController";
+import { router as userRouter } from "./routes/user";
+import { searchController } from "./controllers/searchController";
 
 const app = express();
 const port = process.env.PORT || 3333;
@@ -29,6 +30,7 @@ app.use("/suggestions", suggestionsRouter);
 app.use("/follow", followRouter);
 app.use("/posts", postsRouter);
 app.use("/user", userRouter);
+app.use("/search", searchController);
 
 app.listen(port, () => {
   console.log(

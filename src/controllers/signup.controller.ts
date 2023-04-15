@@ -25,6 +25,7 @@ const signupController = async (
 
   try {
     const createdUser = await userModel.create({
+      profilePic: `https://ui-avatars.com/api/?name=${fullname}`,
       fullname,
       username: [
         ...fullname,

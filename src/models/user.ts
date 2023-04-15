@@ -6,6 +6,7 @@ import {
 } from "mongoose";
 
 const userSchema = new Schema({
+  profilePic: String,
   email: String,
   fullname: String,
   username: String,

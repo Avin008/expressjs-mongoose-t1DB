@@ -9,17 +9,24 @@ const searchController = async (
 
   const pattern = new RegExp(searchKey, "i");
 
-  const searchResult = await userModel
-    .find()
-    .or([
-      { fullname: { $regex: pattern } },
-      { username: { $regex: pattern } },
-    ]);
+  try {
+    const searchResult = await userModel
+      .find()
+      .or([
+        { fullname: { $regex: pattern } },
+        { username: { $regex: pattern } },
+      ]);
 
-  res.status(200).json({
-    message: "search result",
-    data: { searchResult: searchResult },
-  });
+    return res.status(200).json({
+      message: "search result",
+      data: { searchResult: searchResult },
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: "something went wrong",
+      error: error,
+    });
+  }
 };
 
 export { searchController };

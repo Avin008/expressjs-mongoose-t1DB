@@ -9,13 +9,16 @@ const deletePostController = async (
   const { id } = post;
 
   try {
-    const deltedPost = await postModel.findOneAndDelete({
+    const deletedPost = await postModel.findOneAndDelete({
       post_id: id,
     });
 
     return res
       .status(201)
-      .json({ message: "post deleted", data: deltedPost });
+      .json({
+        message: "post deleted",
+        data: { deletedPost: deletedPost },
+      });
   } catch (error) {
     return res.status(400).json({
       message: "something went wrong",

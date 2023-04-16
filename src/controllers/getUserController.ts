@@ -8,18 +8,25 @@ const getUserController = async (
 ) => {
   const { _id } = await req.body;
 
-  const userData = await userModel.findById(_id);
-  const postData = await postModel
-    .find({ author: _id })
-    .populate("author");
+  try {
+    const userData = await userModel.findById(_id);
+    const postData = await postModel
+      .find({ author: _id })
+      .populate("author");
 
-  res.status(200).json({
-    message: "user data",
-    data: {
-      userData: userData,
-      postData: postData,
-    },
-  });
+    return res.status(200).json({
+      message: "user data",
+      data: {
+        userData: userData,
+        postData: postData,
+      },
+    });
+  } catch (error) {
+    return res.status(400).json({
+      message: "something went wrong",
+      error: error,
+    });
+  }
 };
 
 export { getUserController };

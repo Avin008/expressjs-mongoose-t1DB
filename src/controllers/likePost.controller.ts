@@ -21,7 +21,10 @@ const likePostController = async (
 
     return res
       .status(201)
-      .json({ message: "post liked", data: likedPost });
+      .json({
+        message: "post liked",
+        data: { likedPost: likedPost },
+      });
   } catch (error) {
     return res.status(400).json({
       message: "something went wrong",

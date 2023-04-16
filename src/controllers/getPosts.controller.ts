@@ -7,11 +7,6 @@ const getPostController = async (
   req: Request,
   res: Response
 ) => {
-  const { token } = await req.body;
-
-  //   @ts-ignore
-  //   const userId = jwt.verify(token, JWT_SECRET)._id;
-
   try {
     const getPosts = await postModel
       .find()

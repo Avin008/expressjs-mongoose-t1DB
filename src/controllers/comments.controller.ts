@@ -18,8 +18,6 @@ const commentController = async (
       .find()
       .populate("author");
 
-    console.log(comments);
-
     return res.status(200).json({
       message: "post comments",
       data: { comments: comments },

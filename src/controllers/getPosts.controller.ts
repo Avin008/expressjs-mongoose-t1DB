@@ -2,12 +2,21 @@ import { Request, Response } from "express";
 import { postModel } from "../models/post";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "./signup.controller";
-import { commentModel } from "../models/comments";
+import { userModel } from "../models/user";
+import { stringify } from "querystring";
+
 const getPostController = async (
   req: Request,
   res: Response
 ) => {
+  const { token } = await req.body;
+
+  // @ts-ignore
+  const userId = jwt.verify(token, JWT_SECRET)._id;
+
   try {
+    const user = await userModel.findById(userId);
+
     const getPosts = await postModel
       .find()
       .populate("author");

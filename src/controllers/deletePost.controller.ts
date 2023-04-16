@@ -6,19 +6,17 @@ const deletePostController = async (
   res: Response
 ) => {
   const { token, post } = await req.body;
-  const { id } = post;
+  const { _id } = post;
 
   try {
     const deletedPost = await postModel.findOneAndDelete({
-      post_id: id,
+      _id: _id,
     });
 
-    return res
-      .status(201)
-      .json({
-        message: "post deleted",
-        data: { deletedPost: deletedPost },
-      });
+    return res.status(201).json({
+      message: "post deleted",
+      data: { deletedPost: deletedPost },
+    });
   } catch (error) {
     return res.status(400).json({
       message: "something went wrong",

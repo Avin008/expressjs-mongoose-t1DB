@@ -3,7 +3,6 @@ import { postModel } from "../models/post";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "./signup.controller";
 import { userModel } from "../models/user";
-import { stringify } from "querystring";
 
 const getPostController = async (
   req: Request,

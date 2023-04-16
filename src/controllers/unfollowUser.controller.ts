@@ -24,7 +24,7 @@ const unfollowUserController = async (
     const followedUser = await userModel.findByIdAndUpdate(
       userId,
       {
-        $push: { following: followUser._id },
+        $pull: { following: followUser._id },
       }
     );
 

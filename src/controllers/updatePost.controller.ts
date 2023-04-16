@@ -6,12 +6,12 @@ const updatePostController = async (
   res: Response
 ) => {
   const { token, post } = await req.body;
-  const { id, text } = post;
+  const { _id, text } = post;
 
   try {
     const updatedPost = await postModel.findOneAndUpdate(
       {
-        post_id: id,
+        _id: _id,
       },
       { $set: { text: text } }
     );

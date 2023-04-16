@@ -7,10 +7,12 @@ import { commentController } from "../controllers/comments.controller";
 import { addCommentController } from "../controllers/addComment.controller";
 import { likePostController } from "../controllers/likePost.controller";
 import { unLikePostController } from "../controllers/unLikePost.controller";
+import { explorePostsController } from "../controllers/explorePosts.controller";
 
 const router = express.Router();
 
 router.post("/", getPostController);
+router.post("/explore", explorePostsController);
 router.post("/create", createPostController);
 router.post("/delete", deletePostController);
 router.post("/update", updatePostController);

@@ -19,12 +19,10 @@ const likePostController = async (
       { $push: { likes: userId } }
     );
 
-    return res
-      .status(201)
-      .json({
-        message: "post liked",
-        data: { likedPost: likedPost },
-      });
+    return res.status(201).json({
+      message: "post liked",
+      data: { likedPost: likedPost },
+    });
   } catch (error) {
     return res.status(400).json({
       message: "something went wrong",

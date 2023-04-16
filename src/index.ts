@@ -1,17 +1,8 @@
 import "./lib/db";
 import express from "express";
-import { router as authRouter } from "./routes/auth";
-import { router as postRouter } from "./routes/post";
-import {
-  router as likeRouter,
-  router,
-} from "./routes/likePost";
-import cors from "cors";
-import { router as suggestionsRouter } from "./routes/suggestions";
-import { router as followRouter } from "./routes/follow";
-import { router as postsRouter } from "./routes/getPosts";
 import { router as userRouter } from "./routes/user";
-import { searchController } from "./controllers/searchController";
+import { router as postRouter } from "./routes/post";
+import cors from "cors";
 
 const app = express();
 const port = process.env.PORT || 3333;
@@ -23,14 +14,8 @@ app.use(
 );
 app.use(express.text({ type: "text/html" }));
 
-app.use("/", authRouter);
 app.use("/post", postRouter);
-app.use("/like", likeRouter);
-app.use("/suggestions", suggestionsRouter);
-app.use("/follow", followRouter);
-app.use("/posts", postsRouter);
 app.use("/user", userRouter);
-app.use("/search", searchController);
 
 app.listen(port, () => {
   console.log(

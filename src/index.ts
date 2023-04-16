@@ -13,6 +13,7 @@ app.use(
   express.raw({ type: "application/vnd.custom-type" })
 );
 app.use(express.text({ type: "text/html" }));
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/post", postRouter);
 app.use("/user", userRouter);

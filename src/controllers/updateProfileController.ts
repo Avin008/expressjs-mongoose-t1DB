@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { userModel } from "../models/user";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "./signup.controller";
-const updateUserProfileController = async (
+const updateProfileController = async (
   req: Request,
   res: Response
 ) => {
@@ -27,4 +27,4 @@ const updateUserProfileController = async (
   res.status(200).json({ message: "update post" });
 };
 
-export { updateUserProfileController };
+export { updateProfileController };

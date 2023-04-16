@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { userModel } from "../models/user";
 import { postModel } from "../models/post";
 
-const getUserDataController = async (
+const getUserController = async (
   req: Request,
   res: Response
 ) => {
@@ -22,4 +22,4 @@ const getUserDataController = async (
   });
 };
 
-export { getUserDataController };
+export { getUserController };

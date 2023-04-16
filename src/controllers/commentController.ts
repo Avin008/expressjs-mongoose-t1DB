@@ -2,6 +2,7 @@ import { commentModel } from "../models/comments";
 import { Request, Response } from "express";
 import { JWT_SECRET } from "./signup.controller";
 import jwt from "jsonwebtoken";
+
 const commentController = async (
   req: Request,
   res: Response

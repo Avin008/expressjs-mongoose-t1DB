@@ -5,14 +5,18 @@ import { updatePostController } from "../controllers/updatePost.controller";
 import { getPostController } from "../controllers/getPosts.controller";
 import { commentController } from "../controllers/commentController";
 import { addCommentController } from "../controllers/addCommentController";
+import { likePostController } from "../controllers/likePost.controller";
+import { unLikePostController } from "../controllers/unLikePost.controller";
 
 const router = express.Router();
 
-router.get("/", getPostController);
-router.post("/", createPostController);
+router.post("/", getPostController);
+router.post("/create", createPostController);
 router.post("/delete", deletePostController);
-router.put("/", updatePostController);
-router.post("/comments", commentController);
-router.put("/comments", addCommentController);
+router.post("/update", updatePostController);
+router.post("/like", likePostController);
+router.post("/unlike", unLikePostController);
+router.post("/comments/", commentController);
+router.post("/comments/create", addCommentController);
 
 export { router };

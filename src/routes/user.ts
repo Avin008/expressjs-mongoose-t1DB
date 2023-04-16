@@ -5,7 +5,7 @@ import { signupController } from "../controllers/signup.controller";
 import { loginController } from "../controllers/login.controller";
 import { searchController } from "../controllers/searchController";
 import { followUserController } from "../controllers/followUser.controller";
-import { unfollowUserController } from "../controllers/unFollowUser.Controller";
+import { unfollowUserController } from "../controllers/unfollowUser.controller";
 import { suggestionsController } from "../controllers/suggestions.controller";
 const router = express.Router();
 

@@ -25,7 +25,9 @@ const updateProfileController = async (
       }
     );
 
-    return res.status(200).json({ message: "update post" });
+    return res
+      .status(200)
+      .json({ message: "profile updated!" });
   } catch (error) {
     return res
       .status(400)
